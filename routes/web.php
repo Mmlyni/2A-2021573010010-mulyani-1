@@ -13,14 +13,37 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/ehh', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/mull', function () {
-    return view('Semangat cantikk');
+
+Route::get('/view', function () {
+    return view('pora/Home');
 });
 
-Route::get('/mull', function () {
-    return view('cute');
+Route::get('/Login', function () {
+    return view('pora/login');
 });
+
+Route::get('/Lo', function () {
+    return view('PestaPora/index');
+});
+
+Route::get('/o', function () {
+    return view('PestaPora/Toko');
+});
+
+Route::get('/w', function () {
+    return view('PestaPora/projects');
+});
+
+Route::get('/q', function () {
+    return view('PestaPora/orderp');
+});
+
+Route::get('/', [ProductController::class, 'index'])->name('product.index');
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
+
+Route::get('/order/create', [OrderController::class, 'create'])->name('order.create');
+Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
